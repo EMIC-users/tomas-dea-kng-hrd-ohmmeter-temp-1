@@ -11,6 +11,9 @@
 #include "inc/conversionFunctions.h"
 #include "inc/EMICBus.h"
 
+/* User Variables */
+uint16_t ohm = 0;
+
 void onReset()
 {
     LEDs_Led1_blink(100, 400, 6);
@@ -21,7 +24,8 @@ void onReset()
 void etOut1()
 {
     LEDs_Led2_blink(60, 240, 1);
-    pI2C("TEMP\t%.2f", Ohmmeter_Temp_getResistance());
+    ohm = Ohmmeter_Temp_getResistance();
+    pI2C("TEMP\t%u", ohm);
 }
 
 
